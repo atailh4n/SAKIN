@@ -6,9 +6,10 @@
 # Usage and Use Cases
     Now it only logs to its main directory.
     I will add MongoDB and visualize in next versions.
+    Also I added my example packages. You can invest them.
 
 # Contribute
     If you want to contribute, please contact with me or Kaan.
 
 # Lisence
-    Apache 2.0
+    MIT Lisence
