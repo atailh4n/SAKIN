@@ -7,6 +7,7 @@ package Utils
 
 import (
 	"log"
+	"regexp"
 )
 
 // ParseTLSClientHello parses a TLS ClientHello message and extracts the SNI if available.
@@ -89,4 +90,21 @@ func ParseTLSClientHello(payload []byte) (bool, string) {
 
 	log.Println("No SNI extension found")
 	return false, ""
+}
+
+// Temporal solution
+func ParseTLSClientHelloTemp(payload []byte) (bool, string) {
+	decodedPayload := string(payload)
+
+	pattern := `(https?://[^\s]+|www\.[^\s]+)`
+
+	regex := regexp.MustCompile(pattern)
+
+	match := regex.FindString(decodedPayload)
+
+	if match != "" {
+		return true, match
+	} else {
+		return false, ""
+	}
 }

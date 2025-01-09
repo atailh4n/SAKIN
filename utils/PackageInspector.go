@@ -65,7 +65,7 @@ func MonitorTraffic(ifaces []pcap.Interface, db *sql.DB, wg *sync.WaitGroup) {
 						payload := packet.ApplicationLayer().Payload()
 						if len(payload) > 0 {
 							// Try parsing TLS ClientHello to check for SNI
-							if isTLS, sni := ParseTLSClientHello(payload); isTLS {
+							if isTLS, sni := ParseTLSClientHelloTemp(payload); isTLS {
 								if sni != "" {
 									log.Printf("Captured TLS ClientHello with SNI: %s\n", sni)
 									cleanSni := cleanString(sni)
