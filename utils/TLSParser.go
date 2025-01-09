@@ -51,7 +51,7 @@ func ParseTLSClientHello(payload []byte) (bool, string) {
 
 	// Skip compression methods length (1 byte) + compression methods (variable length)
 	if (offset - 1) > len(payload) {
-		log.Panic("SAKIN PANIC: Index out of the range")
+		log.Println("SAKIN PANICover: Index out of the range")
 		return false, ""
 	}
 	offset += 1 + int(payload[offset-1])
